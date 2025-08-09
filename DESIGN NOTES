@@ -1,7 +1,88 @@
-Guardrails-first: every step passes through RecursionGuard.
+Design Notes
+Architecture
+Core loop: plan → step → check → record. Every step passes through RecursionGuard and EvidenceRouter.
 
-Evidence plumbing: claims carry evidence lists by tier; callers set requirements.
+Modes as adapters: Builder, Researcher, Critic, Counselor implement IMode.step(ctx). Hot-swappable at runtime.
 
-No dogma: ZEALOTY_FILTER redirects adversarial dogma to cooperative framing.
+Pipes, not chains: Each stage is a pure function with explicit inputs/outputs. No hidden globals; context carried in RunState.
 
-Determinism knobs: seedable randomness for reproducible tests.
+Determinism knob: Seedable RNG; same inputs → same trace. Non-deterministic paths must declare why.
+
+Invariants (enforced)
+Guard before speak: No output emitted until RecursionGuard.ok(state) passes.
+
+Evidence attached: Any claim object must include evidence[] with tier ∈ {Scripture, Primary, Secondary, Heuristic}.
+
+No coercion: ZEALOTY_FILTER redirects adversarial/dogmatic prompts to cooperative framing, or declines with reason.
+
+Traceability: Every answer has a trace_id, step logs, and guard events.
+
+Recursion Guard
+Limits: max_turns, max_contradictions, max_latency_ms.
+
+Triggers: contradiction spike, mode thrash, evidence deficit, or goal drift.
+
+Behavior: summarize → checkpoint → request nudge. If repeated, degrade to minimal safe answer or abort.
+
+Evidence Model
+Router: caller can require tiers; engine escalates search/verification to meet it or returns insufficient_evidence.
+
+Provenance: source, quote?, hash/url?, reviewed_by?. Hash optional for offline notes.
+
+Scoring (optional): confidence score per item; final claim confidence = calibrated aggregate.
+
+Error Handling
+Hard failures: schema violations, guard overflow → abort with typed error.
+
+Soft failures: missing data → respond "unknown" + open_questions entry.
+
+Degradation: fall back to safer mode (e.g., Critic for risk assessment).
+
+Observability
+RunState: goal, assumptions, constraints, mode, seed, timers.
+
+Events: guard_event, mode_switch, evidence_attach, decline_reason.
+
+Exports: JSONL traces; minimal PII by default.
+
+Security & Ethics
+Boundary registry: app-level allow/deny (medical, legal, violent enablement). Reasons logged.
+
+Red-team hooks: injectable policies; run tests under adversarial prompts.
+
+No secret IO: all external calls must be declared in Capabilities.
+
+Extensibility
+Plugins: new modes/evaluators implement simple interfaces; registered via entry points.
+
+Policies-as-data: YAML/JSON for guard thresholds and boundaries; hot-reloadable.
+
+Reasoner backends: local, API, or mock — behind IModel interface.
+
+Performance
+Early exits: fast contradiction checks before expensive steps.
+
+Batching: group evidence lookups; cache by trace_id + query.
+
+Cost caps: max tokens/time per step; emit partial with provenance if exceeded.
+
+Testing Strategy
+Unit: guard transitions, evidence tier rules, mode adapters.
+
+Property tests: invariants hold across random prompts.
+
+Golden traces: snapshot expected reasoning for regressions.
+
+Fuzz: adversarial prompts, contradiction storms, mode flapping.
+
+
+E8/Tree-of-Life integration notes
+Mapping: concepts ↔ root orbits; transitions ↔ minimal Weyl words. Keep partitions disjoint and documented.
+
+Projection: Coxeter-plane or PCA for visuals; do not interpret geometry as metaphysics.
+
+Use case: shortest-path reasoning, symmetry-based alternative proofs/explanations.
+
+
+
+
