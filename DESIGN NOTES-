@@ -1,0 +1,7 @@
+Guardrails-first: every step passes through RecursionGuard.
+
+Evidence plumbing: claims carry evidence lists by tier; callers set requirements.
+
+No dogma: ZEALOTY_FILTER redirects adversarial dogma to cooperative framing.
+
+Determinism knobs: seedable randomness for reproducible tests.
