@@ -11,7 +11,7 @@ I design systems that align machine reasoning to truth + mercy, using recursive 
 
 Alignment Guardrails — truth-verification layers, recursion-loop protection, safe reasoning modes.
 
-Recursive Logic Systems — LogOS.Primus framework for aligned, multi-mode reasoning.
+Recursive Logic Systems — LogOS framework for aligned, multi-mode reasoning.
 
 Symbolic Graph Engines — TreeOfLifeEngine.py for E8 lattice + Tree of Life traversal.
 
