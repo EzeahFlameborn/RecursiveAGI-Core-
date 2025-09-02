@@ -1,41 +1,67 @@
-# Recursive_AI_Framework
 Truth-aligned recursive reasoning with guardrails, evidence tiers, and loop control.
 
 > Build agents that “propose & test,” cite evidence, and avoid runaway recursion.
 
-## Features
-- **Recursion Guard**: checkpoints + loop limits with summaries and nudges.
-- **Evidence Mode**: label claims by `{Scripture | Primary | Secondary | Heuristic}`.
-- **Modes**: `Builder`, `Counselor`, `Researcher`, `Critic` (switchable at runtime).
-- **Boundaries**: anti-coercion, zealotry filter, and mercy-first handler for distress.
-- **Pipelines**: step functions with testable, composable stages.
-- **Lightweight**: no heavy deps; drop-in for notebooks or services.
 
-## Quickstart
-```bash
-pip install -e .
-python examples/min_demo.py
 
-# examples/min_demo.py
-from raf.core import Reasoner, Evidence, RecursionGuard
+Why this exists
 
-guard = RecursionGuard(max_turns=3, checkpoint_on="contradiction")
-r = Reasoner(
-    modes=["Builder", "Researcher", "Critic"],
-    guard=guard,
-    zealoty_filter=True,
-)
+Nudge models toward truth + mercy instead of zealotry or certainty theater.
 
-claim = r.ask(
-    prompt="Summarize E8 ↔ Tree-of-Life mapping risks in 3 bullets.",
-    evidence=Evidence(required_tiers=["Secondary", "Heuristic"]),
-)
+Make reasoning auditable: claims carry evidence, loops are bounded, contradictions are surfaced.
 
-print("== ANSWER ==")
-print(claim.text)
-print("\n== EVIDENCE ==")
-for item in claim.evidence:
-    print(f"- [{item.tier}] {item.source}")
-print("\n== GUARD LOG ==")
-for e in r.guard.events: print(f"* {e.kind}: {e.note}")
 
+Features
+
+Recursion Guard — checkpoints, loop limits, contradiction nudges.
+
+Evidence Mode — label claims: {Scripture | Primary | Secondary | Heuristic}.
+
+Agent Modes — Builder, Counselor, Researcher, Critic (hot-swappable).
+
+Boundaries — anti-coercion, zealotry filter, mercy-first handler for distress.
+
+Pipelines — small, composable steps you can unit-test.
+
+Heuristic Core — RF v2 scorer blending fidelity, creativity, flow, and safety.
+
+
+
+---
+
+Getting started (current state = local demo)
+
+Note: until we wire a real LLM, the demo stubs the model call and shows how evidence, guardrails, and scoring are threaded. It’s a template you can drop into notebooks/services.
+
+
+
+
+---
+
+LogOS Proto-Heuristic Core (RF v2)
+
+Output to score: 
+Target:  (expert rating, downstream lift)
+Activation:  or identity
+
+Contributing
+
+Keep modules pure & testable.
+
+Prefer small functions with docstrings and unit tests.
+
+Add one end-to-end example per new mode or guard.
+
+
+Roadmap (short)
+
+Plug a real LLM call (OpenRouter/OpenAI/etc.) behind an interface.
+
+Add Counselor compassionate-safety mode.
+
+Export full component traces for RF(x).
+
+
+License
+
+MIT (ship mercy, not coercion).
