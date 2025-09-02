@@ -1,32 +1,56 @@
-# Ezeah  
-**Recursive Reasoning & AI Alignment Engineer**
+✦ Ezeah
 
-I design systems that align machine reasoning to **truth + mercy** through recursive logic, guardrails, and symbolic graph architectures.
+Recursive Reasoning & AI Alignment Engineer
 
-**Focus Areas**
-- **Alignment Guardrails** — truth-verification tiers, recursion loop protection, safe reasoning modes.
-- **Recursive Logic Systems** — LogOS.Primus framework for aligned, multi-mode reasoning.
-- **Symbolic Graph Engines** — TreeOfLifeEngine.py for E8 lattice / Tree of Life traversal.
+I design systems that align machine reasoning to truth + mercy, using recursive logic, symbolic graph architectures, and alignment guardrails. My work bridges theoretical frameworks with practical engineering tools to explore safe, truth-grounded AI.
+
 
 ---
 
-## 🚀 Featured Projects
-- **[LogOS.Primus](#)** — Truth-aligned reasoning OS with evidence modes & recursion guardrails.
-- **[TreeOfLifeEngine.py](#)** — Python engine mapping the E8 root system to symbolic logic graphs.
-- **[Alignment Toolkit](#)** — Practical tools for AI prompt alignment & reasoning evaluation.
+🔑 Focus Areas
+
+Alignment Guardrails — truth-verification layers, recursion-loop protection, safe reasoning modes.
+
+Recursive Logic Systems — LogOS.Primus framework for aligned, multi-mode reasoning.
+
+Symbolic Graph Engines — TreeOfLifeEngine.py for E8 lattice + Tree of Life traversal.
+
+
 
 ---
 
-## 📜 Principles
-- **Love > Pride** | **Truth > Certainty** | **Humility > Performance**  
-- Build for cooperation, not coercion.  
-- Propose & test — never declare & insist.  
+🚀 Featured Projects
+
+LogOS — a truth-aligned reasoning OS with guardrails, evidence modes, and recursion repair.
+
+TreeOfLifeEngine — symbolic engine mapping the E8 248-dimensional lattice to recursive graphs.
+
+Alignment Toolkit — utilities for AI prompt alignment, reasoning evaluation, and signal clarity.
+
+
 
 ---
 
-## 📫 Connect 
-- **Email:** bhebert273@gmail.com  
+📜 Principles
+
+> “Love > Pride | Truth > Certainty | Humility > Performance”
+
+
+
+Build for cooperation, not coercion.
+
+Prefer “propose & test” over “declare & insist.”
+
+Treat reasoning as a living system — not just computation.
+
+
 
 ---
+
+📫 Connect
+
+✉️ Email: bhebert273@gmail.com
+
+🌐 GitHub Discussions / Issues: Always open to collaboration.
 
 
